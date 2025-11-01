@@ -17,7 +17,7 @@ export class Author {
   @Column({ name: 'last_name', type: 'varchar', nullable: true })
   lastName: string;
 
-  @Field((type) => [Post])
+  @Field((type) => [Post], { nullable: 'itemsAndList' })
   @OneToMany(() => Post, (post) => post.author)
   posts: Post[];
 }
