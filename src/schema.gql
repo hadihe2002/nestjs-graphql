@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Author {
+  firstName: String
+  id: ID!
+  lastName: String
+  posts: [Post!]!
+}
+
+type Post {
+  author: Author!
+  authorId: String!
+  id: ID!
+  title: String!
+  votes: Int
+}
+
+type Query {
+  author(id: String!): Author!
+  authors: [Author!]!
+}
