@@ -11,7 +11,7 @@ export class PostLoader {
   ) {}
 
   createLoader() {
-    return new DataLoader(async (authorIds: string[]) => {
+    async function authorLoader(authorIds: string[]) {
       const posts = await this.postRepository.find({
         where: { authorId: In(authorIds) },
       });
@@ -23,6 +23,7 @@ export class PostLoader {
       });
 
       return authorIds.map((id) => postsByAuthor.get(id) || []);
-    });
+    }
+    return new DataLoader(authorLoader.bind(this));
   }
 }
