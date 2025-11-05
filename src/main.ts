@@ -5,7 +5,11 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './.env' });
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3000, () =>
+    console.log(
+      `Server is on http://localhost:${process.env.PORT ?? 3000}/graphql`,
+    ),
+  );
 }
 
 bootstrap();
